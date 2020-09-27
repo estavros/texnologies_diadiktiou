@@ -13,7 +13,7 @@ if(isset($_POST['submit'])){
     $nm = $_POST['name'];
     $sn = $_POST['surname'];
     $mail = $_POST['mail'];
-    $conn = new mysqli("localhost","root","sloth","texnologies_diadiktiou");
+    $conn = new mysqli("localhost","root","","texnologies_diadiktiou");
 
   
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 27, 2020 at 02:30 PM
+-- Generation Time: Sep 27, 2020 at 07:02 PM
 -- Server version: 10.3.23-MariaDB-0+deb10u1
 -- PHP Version: 7.3.19-1~deb10u1
 
@@ -629,6 +629,7 @@ INSERT INTO `users` (`id`, `username`, `password`, `onoma`, `eponimo`, `mail`) V
 (18, 'cscobieh', 'BscibobbLr3', 'Carlynn', 'Scobie', 'cscobieh@bloglovin.com'),
 (19, 'fhowcrofti', '61iXmzGMC', 'Frederica', 'Howcroft', 'fhowcrofti@imageshack.us'),
 (20, 'acottisj', 'VDDNVCKWN', 'Alexi', 'Cottis', 'acottisj@stanford.edu'),
+(123, '124erfd', 'sdf', 'asfd', 'asdf', 'sadf'),
 (1234, 'qwer', 'qwer', 'qwer', 'qwer', 'qwer'),
 (2345, 'qwer', 'rta', 'sgd', 'jf', 'fgj');
 

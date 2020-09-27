@@ -9,7 +9,7 @@ if(isset($_POST['submit'])){
     //Define $username and $password
     $un = $_POST['username'];
     $pw = $_POST['password'];
-    $conn = new mysqli("localhost","root","sloth","texnologies_diadiktiou");
+    $conn = new mysqli("localhost","root","","texnologies_diadiktiou");
 
 
   
@@ -18,11 +18,11 @@ if(isset($_POST['submit'])){
     if ($conn->connect_error) {
 	    die("Connectionfailed: " . $conn->connect_error);
     }
-	$sql = "SELECT id,onoma FROM users WHERE username = '".$un."' AND password = '".$pw."';";
+	$sql = "SELECT id FROM users WHERE username = '".$un."' AND password = '".$pw."';";
     	$result = $conn->query($sql);
         $row = $result->fetch_assoc();
 	if($result->num_rows > 0){
-      		header('Location: '.$next.$row["onoma"]);
+      		header('Location: '.$next.$row["id"]);
     	}else{
       		echo '<script>alert("Invalid username or password");</script>';
     	}

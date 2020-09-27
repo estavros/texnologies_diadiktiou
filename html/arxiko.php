@@ -138,8 +138,27 @@ window.onload = function() {
     margin-left: -50px;
     width: 100px;
     height: 100px;
-}​
+}
+#review {
+	display: none;
+	height: 70%;
+	background-color: white;
+	overflow-y: scroll;	
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	text-align: center;
+	width: 50%;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
 
+}
+#review::-webkit-scrollbar{
+	display: none;
+}
 </style>
 </head>
 <body>
@@ -150,7 +169,7 @@ window.onload = function() {
             <ul>
                 <li><a class="active" href="#" id="home">Home</a></li>
                 <li><a id="eisagogi" href="javascript:scheduleToggle()">Schedule Exam</a></li>
-                <li><a id="proboli">Exam Review</a></li>
+                <li><a id="proboli" href="javascript:reviewToggle()">Exam Review</a></li>
                 <li><a href="index.html" id="teliki">Log Out</a></li>
             </ul>
         </nav>
@@ -171,6 +190,46 @@ Chapters: <select name="chapter" id="chapter">
   <input type="submit" value="Submit">  
 </form>
 </div>
+<div id="review">
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "texnologies_diadiktiou";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+if ($conn->connect_error) {
+	die("Connection failed: " . $conn->connect_error);
+}
+$a = intval($_GET[xristis]);
+$sql = "SELECT DISTINCT eksetaseis.exam_type,eksetaseis.exam,sinolo.date,sinolo.paid FROM users,sinolo,eksetaseis WHERE sinolo.user_id= $a and eksetaseis.id = sinolo.exam_id";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+	echo '<table border="1" display: inline-block>
+			<tr>
+			<th><b>Τύπος εξέτασης</b></th>
+			<th><b>Εξέταση</b></th>
+			<th><b>Ημερομηνία</b></th>
+			<th><b>Τρόπος Πληρωμής</b></th>
+			</tr>';
+	while($row = $result->fetch_assoc()) {
+		if ($row["paid"] == 1) {
+			$b = "Πληρώθηκε από τον ίδιο";
+		} else {
+			$b = "Πληρώθηκε από την ασφαλιστική";
+		}
+		echo "<tr>
+			<td>".$row["exam_type"]."</td>
+			<td>".$row["exam"]."</td>
+			<td>".$row["date"]."</td>
+			<td>".$b."</td>";
+	}
+}else {
+	echo "Δεν έχει πραγματοποιηθεί κάποια εξέταση!";
+}
+$conn->close();
+?>
 </div>
     </div>
 <script>
@@ -182,6 +241,14 @@ Chapters: <select name="chapter" id="chapter">
     x.style.display = "block";
   }
 }
+	function reviewToggle() {
+		var x = document.getElementById("review");
+		if (x.style.display === "block") {
+			x.style.display = "none";
+		} else {
+			x.style.display = "block";
+		}
+	}
 </script>
 </body>
 </html>
