@@ -1,21 +1,44 @@
+-- phpMyAdmin SQL Dump
+-- version 4.6.6deb5
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost:3306
+-- Generation Time: Sep 27, 2020 at 02:30 PM
+-- Server version: 10.3.23-MariaDB-0+deb10u1
+-- PHP Version: 7.3.19-1~deb10u1
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
+--
+-- Database: `texnologies_diadiktiou`
+--
 
-CREATE TABLE eksetaseis (
-  id int(2) NOT NULL,
-  exam_type varchar(50) NOT NULL,
-  exam varchar(50) NOT NULL,
-  price int(3) NOT NULL,
-  description varchar(1000) NOT NULL
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `eksetaseis`
+--
+
+CREATE TABLE `eksetaseis` (
+  `id` int(2) NOT NULL,
+  `exam_type` varchar(50) NOT NULL,
+  `exam` varchar(50) NOT NULL,
+  `price` int(3) NOT NULL,
+  `description` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO eksetaseis (id, exam_type, exam, price, description) VALUES
+--
+-- Dumping data for table `eksetaseis`
+--
+
+INSERT INTO `eksetaseis` (`id`, `exam_type`, `exam`, `price`, `description`) VALUES
 (1, 'Αιματολογικές εξετάσεις', 'Γενική Εξέταση Αίματος', 2, 'Θα πρέπει να είστε νηστικοί για 12 ώρες και για 24 ώρες να μην έχετε καταναλώσει αλκοόλ. Επιτρέπεται το νερό και το κάπνισμα. Θα πρέπει να ενημερώσετε για τυχόν λήψη φαρμάκων'),
 (2, 'Αιματολογικές εξετάσεις', 'Αιματοκρίτης', 10, 'Θα πρέπει να είστε νηστικοί για 12 ώρες και για 24 ώρες να μην έχετε καταναλώσει αλκοόλ. Επιτρέπεται το νερό και το κάπνισμα. Θα πρέπει να ενημερώσετε για τυχόν λήψη φαρμάκων'),
 (3, 'Αιματολογικές εξετάσεις', 'Έλεγχος αναιμίας Ι', 20, 'Θα πρέπει να είστε νηστικοί για 12 ώρες πριν την αιμοληψία και να μην λαμβάνετε βιταμίνες. Θα πρέπει να είστε νηστικοί για 12 ώρες και για 24 ώρες να μην έχετε καταναλώσει αλκοόλ. Επιτρέπεται το νερό και το κάπνισμα. Θα πρέπει να ενημερώσετε για τυχόν λήψη φαρμάκων.'),
@@ -47,14 +70,24 @@ INSERT INTO eksetaseis (id, exam_type, exam, price, description) VALUES
 (29, 'Νευρολογικές εξετάσεις', 'Ηλεκτροεγκεφαλογραφία (ΗΕΓ)', 80, 'Δεν απαιτείται προετοιμασία'),
 (30, 'Νευρολογικές εξετάσεις', 'Κεφαλομετρική', 25, 'Δεν απαιτείτε καμία ιδιαίτερη προετοιμασία. Μην ξεχνάτε να έχετε μαζί σας την προηγούμενη εξέταση.');
 
-CREATE TABLE sinolo (
-  user_id int(11) NOT NULL,
-  exam_id int(11) NOT NULL,
-  date date NOT NULL,
-  paid tinyint(1) NOT NULL
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sinolo`
+--
+
+CREATE TABLE `sinolo` (
+  `user_id` int(11) NOT NULL,
+  `exam_id` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `paid` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO sinolo (user_id, exam_id, `date`, paid) VALUES
+--
+-- Dumping data for table `sinolo`
+--
+
+INSERT INTO `sinolo` (`user_id`, `exam_id`, `date`, `paid`) VALUES
 (2, 14, '2020-06-04', 0),
 (2, 18, '2020-02-13', 0),
 (17, 19, '2019-12-28', 1),
@@ -556,16 +589,26 @@ INSERT INTO sinolo (user_id, exam_id, `date`, paid) VALUES
 (1, 29, '2020-01-18', 1),
 (11, 17, '2020-07-02', 0);
 
-CREATE TABLE users (
-  id int(10) NOT NULL,
-  username varchar(20) NOT NULL,
-  password varchar(20) NOT NULL,
-  onoma varchar(20) NOT NULL,
-  eponimo varchar(20) NOT NULL,
-  mail varchar(30) NOT NULL
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(10) NOT NULL,
+  `username` varchar(20) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  `onoma` varchar(20) NOT NULL,
+  `eponimo` varchar(20) NOT NULL,
+  `mail` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO users (id, username, `password`, onoma, eponimo, mail) VALUES
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `onoma`, `eponimo`, `mail`) VALUES
 (1, 'msheerman0', 'PvfbWF5WGg', 'Minerva', 'Sheerman', 'msheerman0@cafepress.com'),
 (2, 'tvarne1', 'F7Q81pRF', 'Tabina', 'Varne', 'tvarne1@hostgator.com'),
 (3, 'vassard2', '9Ds9bnu3Z2', 'Vassily', 'Assard', 'vassard2@thetimes.co.uk'),
@@ -589,12 +632,21 @@ INSERT INTO users (id, username, `password`, onoma, eponimo, mail) VALUES
 (1234, 'qwer', 'qwer', 'qwer', 'qwer', 'qwer'),
 (2345, 'qwer', 'rta', 'sgd', 'jf', 'fgj');
 
+--
+-- Indexes for dumped tables
+--
 
-ALTER TABLE eksetaseis
-  ADD PRIMARY KEY (id);
+--
+-- Indexes for table `eksetaseis`
+--
+ALTER TABLE `eksetaseis`
+  ADD PRIMARY KEY (`id`);
 
-ALTER TABLE users
-  ADD PRIMARY KEY (id);
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

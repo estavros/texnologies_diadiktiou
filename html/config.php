@@ -1,6 +1,6 @@
 <?php
 $error='';//variable to store error message;
-$next="index.html";
+$next="arxiko.html";
 if(isset($_POST['submit'])){
   if(empty($_POST['username']) || empty($_POST['password'])){
     echo '<script>alert("Invalid username or password");</script>';
@@ -9,7 +9,7 @@ if(isset($_POST['submit'])){
     //Define $username and $password
     $un = $_POST['username'];
     $pw = $_POST['password'];
-    $conn = new mysqli("localhost","root","","texnologies_diadiktiou");
+    $conn = new mysqli("localhost","root","sloth","texnologies_diadiktiou");
 
 
   
