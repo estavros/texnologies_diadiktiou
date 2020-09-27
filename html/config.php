@@ -1,6 +1,6 @@
 <?php
 $error='';//variable to store error message;
-$next="arxiko.html";
+$next="arxiko.php?xristis=";
 if(isset($_POST['submit'])){
   if(empty($_POST['username']) || empty($_POST['password'])){
     echo '<script>alert("Invalid username or password");</script>';
@@ -18,19 +18,20 @@ if(isset($_POST['submit'])){
     if ($conn->connect_error) {
 	    die("Connectionfailed: " . $conn->connect_error);
     }
-	$sql = "SELECT id FROM users WHERE USERNAME = '".$un."' AND PASSWORD = '".$pw."';";
+	$sql = "SELECT id,onoma FROM users WHERE username = '".$un."' AND password = '".$pw."';";
     	$result = $conn->query($sql);
-
-	if (empty($result)) {
-		echo '<script>alert("Invalid username or password");</script>';
-		
-  
-	} else {
-		header('Location: '.$next);
-	}
+        $row = $result->fetch_assoc();
+	if($result->num_rows > 0){
+      		header('Location: '.$next.$row["onoma"]);
+    	}else{
+      		echo '<script>alert("Invalid username or password");</script>';
+    	}
+    	mysqli_close($conn);
   }
 }
 
  
   
 ?>
+
+

@@ -111,7 +111,7 @@
 		Όνομα<input type = "text" name="name" class="text" placeholder="Όνομα" required>
 		Επώνυμο<input type = "text" name="surname" class="text" placeholder="Επώνυμο" required>
 		E-Mail<input type="text" name="mail" class="text" placeholder="E-Mail" required>
-		<input type = "Submit" name="submit" value="Login" id="sub">
+		<input type = "Submit" name="submit" value="Sign Up" id="sub">
 		</form>
 	</div>
         </div>
