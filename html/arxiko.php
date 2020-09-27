@@ -126,6 +126,9 @@
 #moto {
 	display: block;
 }
+#onoma {
+	display: none;
+}
 </style>
 </head>
 <body>
@@ -181,8 +184,8 @@
       <option value="28">Νευρολογικές εξετάσεις, 24ΩΡΟ Holter εγκεφαλογράφημα</option>
       <option value="29">Νευρολογικές εξετάσεις, Ηλεκτροεγκεφαλογραφία (ΗΕΓ)</option>
       <option value="30">Νευρολογικές εξετάσεις, Κεφαλομετρική</option>
+
   </div>
-<br><br>
   <div class="tab">Ημερομηνία:
     <p><input name="day" placeholder="dd" oninput="this.className = ''" name="dd"></p>
     <p><input name="month" placeholder="mm" oninput="this.className = ''" name="nn"></p>
@@ -193,6 +196,7 @@
       <option value="0">Με ασφάλεια</option>
       <option value="1">Χωρίς Ασφάλεια</option>
     </select>
+	<input type="text" name="onoma" id="onoma" value="<?php echo $_GET['xristis'];?>" >
     <br><br>
 <input type="submit" value="Submit">
 
