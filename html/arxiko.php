@@ -93,42 +93,6 @@
         .buttons button:hover{
             background: #cc0000;
         }       
-    </style>
-<script>
-var subjectObject = {
-  "Front-end": {
-    "HTML": ["Links", "Images", "Tables", "Lists"],
-    "CSS": ["Borders", "Margins", "Backgrounds", "Float"],
-    "JavaScript": ["Variables", "Operators", "Functions", "Conditions"]    
-  },
-  "Back-end": {
-    "PHP": ["Variables", "Strings", "Arrays"],
-    "SQL": ["SELECT", "UPDATE", "DELETE"]
-  }
-}
-window.onload = function() {
-  var subjectSel = document.getElementById("subject");
-  var topicSel = document.getElementById("topic");
-  var chapterSel = document.getElementById("chapter");
-  for (var x in subjectObject) {
-    subjectSel.options[subjectSel.options.length] = new Option(x, x);
-  }
-  subjectSel.onchange = function() {
-    //display correct values
-    for (var y in subjectObject[this.value]) {
-      topicSel.options[topicSel.options.length] = new Option(y, y);
-    }
-  }
-  topicSel.onchange = function() {
-    //display correct values
-    var z = subjectObject[subjectSel.value][this.value];
-    for (var i = 0; i < z.length; i++) {
-      chapterSel.options[chapterSel.options.length] = new Option(z[i], z[i]);
-    }
-  }
-}
-</script>
-<style>
 #schedule{
 	display: none;
     position: absolute;
@@ -182,20 +146,57 @@ window.onload = function() {
             <h2>and Healthier Life!</h2>
         </div>
 <div id="schedule">
-<form name="form1" id="form1" action="/action_page.php">
-Subjects: <select name="subject" id="subject">
-    <option value="" selected="selected">Select subject</option>
-  </select>
-  <br><br>
-Topics: <select name="topic" id="topic">
-    <option value="" selected="selected">Please select subject first</option>
-  </select>
-  <br><br>
-Chapters: <select name="chapter" id="chapter">
-    <option value="" selected="selected">Please select topic first</option>
-  </select>
-  <br><br>
-  <input type="submit" value="Submit">  
+<form name="form1" id="form1" action="action_page.php">
+<div class="tab">
+    <label>Please select exam</label>
+    <select name="exam_type" id="exam_type">
+      <option value="---Exam Type---">---Exam Type---</option>
+      <option value="1">Αιματολογικές εξετάσεις, Γενική Εξέταση Αίματος</option>
+      <option value="2">Αιματολογικές εξετάσεις, Αιματοκρίτης</option>
+      <option value="3">Αιματολογικές εξετάσεις, Έλεγχος αναιμίας Ι</option>
+      <option value="4">Ακτινογραφίες, Ακτινογραφία πανοραμική</option>
+      <option value="5">Ακτινογραφίες, Ψηφιακή ακτινογραφία πανοραμική</option>
+      <option value="6">Ακτινογραφίες, Ακτινογραφία θώρακος</option>
+      <option value="7">Αλλεργιολογικές εξετάσεις, Ειδική Ανοσοσφαιρίνη IgE</option>
+      <option value="8">Αλλεργιολογικές εξετάσεις, RastMX1A* - Μύκητες1(Μ1/Μ2/Μ3//M5/Μ6)</option>
+      <option value="9">Αλλεργιολογικές εξετάσεις, RastTΧ7A* - Δένδρα7(Τ9/Τ12/Τ16/Τ18/Τ19/Τ21)</option>
+      <option value="10">Ανοσολογικές εξετάσεις, ANCA-C', 5</option>
+      <option value="11">Ανοσολογικές εξετάσεις, Αυστραλιανό Αντιγόνο (HBsAg)</option>
+      <option value="12">Ανοσολογικές εξετάσεις, Strep Test</option>
+      <option value="13">Βιοχημικές εξετάσεις, Σάκχαρο</option>
+      <option value="14">Βιοχημικές εξετάσεις, Τρανσαμινάση AST (SGOT)</option>
+      <option value="15">Βιοχημικές εξετάσεις, Χοληστερόλη</option>
+      <option value="16">Γαστρεντερολογικές εξετάσεις, Γαστροσκόπηση</option>
+      <option value="17">Γαστρεντερολογικές εξετάσεις, Breath Test</option>
+      <option value="18">Γαστρεντερολογικές εξετάσεις, CLO TEST</option>
+      <option value="19">Καρδιολογικές εξετάσεις, Holter ρυθμού 24ωρου</option>
+      <option value="20">Καρδιολογικές εξετάσεις, Ηλεκτροκαρδιογράφημα</option>
+      <option value="21">Καρδιολογικές εξετάσεις, Καρδιολογική εξέταση</option>
+      <option value="22">Μαγνητικές τομογραφίες, Μαγνητική τομογραφία εγκεφάλου</option>
+      <option value="23">Μαγνητικές τομογραφίες, Μαγνητική τομογραφία θώρακος</option>
+      <option value="24">Μαγνητικές τομογραφίες, Μαγνητική τομογραφία γόνατος</option>
+      <option value="25">Μικροβιολογικές εξετάσεις, Παρασιτολογική Κοπράνων</option>
+      <option value="26">Μικροβιολογικές εξετάσεις, Mayer Κοπράνων</option>
+      <option value="27">Μικροβιολογικές εξετάσεις, Αντιβιόγραμμας</option>
+      <option value="28">Νευρολογικές εξετάσεις, 24ΩΡΟ Holter εγκεφαλογράφημα</option>
+      <option value="29">Νευρολογικές εξετάσεις, Ηλεκτροεγκεφαλογραφία (ΗΕΓ)</option>
+      <option value="30">Νευρολογικές εξετάσεις, Κεφαλομετρική</option>
+  </div>
+<br><br>
+  <div class="tab">Ημερομηνία:
+    <p><input name="day" placeholder="dd" oninput="this.className = ''" name="dd"></p>
+    <p><input name="month" placeholder="mm" oninput="this.className = ''" name="nn"></p>
+    <p><input name="year" placeholder="yyyy" oninput="this.className = ''" name="yyyy"></p>
+  </div>
+  <div class="tab">Τρόπος Πληρωμής:
+    <select name="tab_payment" id="tab_payment" multiple>
+      <option value="0">Με ασφάλεια</option>
+      <option value="1">Χωρίς Ασφάλεια</option>
+    </select>
+    <br><br>
+<input type="submit" value="Submit">
+
+  </div>
 </form>
 </div>
 <div id="review">
