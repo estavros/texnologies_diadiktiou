@@ -18,11 +18,11 @@ if(isset($_POST['submit'])){
     if ($conn->connect_error) {
 	    die("Connectionfailed: " . $conn->connect_error);
     }
-	$sql = "SELECT id FROM users WHERE username = '".$un."' AND password = '".$pw."';";
+	$sql = "SELECT id,onoma FROM users WHERE username = '".$un."' AND password = '".$pw."';";
     	$result = $conn->query($sql);
         $row = $result->fetch_assoc();
 	if($result->num_rows > 0){
-      		header('Location: '.$next.$row["id"]);
+      		header('Location: '.$next.$row["id"].'&onoma='.$row["onoma"]);
     	}else{
       		echo '<script>alert("Invalid username or password");</script>';
     	}

@@ -57,14 +57,14 @@
             user-select: none;
         }
         .center h1{
-            color: red;
+            color: blue;
             font-size: 70px;
             font-weight: bold;
             width: 900px;
             text-align: center;
         }
         .center h2{
-            color: red;
+            color: blue;
             font-size: 70px;
             font-weight: bold;
             width: 885px;
@@ -159,6 +159,9 @@ window.onload = function() {
 #review::-webkit-scrollbar{
 	display: none;
 }
+#moto {
+	display: block;
+}
 </style>
 </head>
 <body>
@@ -167,12 +170,17 @@ window.onload = function() {
         <nav class="navbar">
             <img class="logo" src="redcross.png">
             <ul>
-                <li><a class="active" href="#" id="home">Home</a></li>
+	    <li><a class="active" href="#" id="home"><?php 
+							echo "Hello ".$_GET['onoma']; ?></a></li>
                 <li><a id="eisagogi" href="javascript:scheduleToggle()">Schedule Exam</a></li>
                 <li><a id="proboli" href="javascript:reviewToggle()">Exam Review</a></li>
                 <li><a href="index.html" id="teliki">Log Out</a></li>
             </ul>
         </nav>
+<div class="center" id="moto">
+            <h1>For a Longer, Better</h1>
+            <h2>and Healthier Life!</h2>
+        </div>
 <div id="schedule">
 <form name="form1" id="form1" action="/action_page.php">
 Subjects: <select name="subject" id="subject">
@@ -206,7 +214,7 @@ $sql = "SELECT DISTINCT eksetaseis.exam_type,eksetaseis.exam,sinolo.date,sinolo.
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-	echo '<table border="1" display: inline-block>
+	echo '<table border="1" display: inline-block >
 			<tr>
 			<th><b>Τύπος εξέτασης</b></th>
 			<th><b>Εξέταση</b></th>
@@ -234,19 +242,25 @@ $conn->close();
     </div>
 <script>
 	function scheduleToggle() {
-  var x = document.getElementById("schedule");
+		var x = document.getElementById("schedule");
+		var y = document.getElementById("moto");
   if (x.style.display === "block") {
-    x.style.display = "none";
+	  x.style.display = "none";
+	  y.style.display="block";
   } else {
-    x.style.display = "block";
+	  x.style.display = "block";
+	  y.style.display="none";
   }
 }
 	function reviewToggle() {
 		var x = document.getElementById("review");
+		var y = document.getElementById("moto");
 		if (x.style.display === "block") {
 			x.style.display = "none";
+			y.style.display="block";
 		} else {
 			x.style.display = "block";
+			y.style.display="none";
 		}
 	}
 </script>
